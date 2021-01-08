@@ -20,6 +20,8 @@ public class SpringKafkaTestApplication {
 
 		String topic =  System.getenv("KAFKA_TOPIC"); //"spring-kafka-test"
 
+		System.out.println("-----" + topic);
+
 		Producer producer = new Producer(topic);
 
 		new Thread(() -> {
@@ -48,6 +50,11 @@ public class SpringKafkaTestApplication {
 	@GetMapping("/messages")
 	public String messages() {
 		return messages.toString();
+	}
+
+	@GetMapping("/health")
+	public String health() {
+		return "ok";
 	}
 
 }
